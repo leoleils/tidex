@@ -42,7 +42,7 @@ namespace SharySMAPI
                 var obj = pair.Value;
                 
                 // Check if it's a collectible resource (fruits, vegetables, etc.)
-                if (obj is FruitTree || obj is HoeDirt || obj.Name.Contains("Cauliflower") || 
+                if (obj.Name.Contains("Cauliflower") || 
                     obj.Name.Contains("Potato") || obj.Name.Contains("Blueberry") ||
                     obj.Name.Contains("Corn") || obj.Name.Contains("Tomato") ||
                     obj.Name.Contains("Wheat") || obj.Name.Contains("Carrot") ||
@@ -71,7 +71,9 @@ namespace SharySMAPI
                     {
                         // Place item on the floor of the house
                         var position = new Vector2(10, 10); // Simplified position
-                        house.Objects.Add(position, new Chest(true, new List<Item> { item }, position));
+                        var chest = new Chest(true);
+                        chest.addItem(item);
+                        house.Objects.Add(position, chest);
                     }
                 }
             }

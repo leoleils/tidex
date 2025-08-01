@@ -1,0 +1,5 @@
+/Users/chenleiyu/Desktop/tidex/SharySMAPI/obj/Release/net5.0/SharySMAPI.csproj.AssemblyReference.cache
+/Users/chenleiyu/Desktop/tidex/SharySMAPI/obj/Release/net5.0/SharySMAPI.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chenleiyu/Desktop/tidex/SharySMAPI/obj/Release/net5.0/SharySMAPI.AssemblyInfoInputs.cache
+/Users/chenleiyu/Desktop/tidex/SharySMAPI/obj/Release/net5.0/SharySMAPI.AssemblyInfo.cs
+/Users/chenleiyu/Desktop/tidex/SharySMAPI/obj/Release/net5.0/SharySMAPI.csproj.CoreCompileInputs.cache

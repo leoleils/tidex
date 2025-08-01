@@ -1,55 +1,35 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Platforms>x64</Platforms>
     <GamePath>$(StardewPath)</GamePath>
-    <ModZipPath>$(GamePath)\Mods</ModZipPath>
   </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="Stardew Valley">
       <HintPath>$(GamePath)\Stardew Valley.dll</HintPath>
-      <Private>false</Private>
     </Reference>
     <Reference Include="StardewModdingAPI">
       <HintPath>$(GamePath)\StardewModdingAPI.dll</HintPath>
-      <Private>false</Private>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework">
       <HintPath>$(GamePath)\Microsoft.Xna.Framework.dll</HintPath>
-      <Private>false</Private>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Game">
       <HintPath>$(GamePath)\Microsoft.Xna.Framework.Game.dll</HintPath>
-      <Private>false</Private>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Graphics">
       <HintPath>$(GamePath)\Microsoft.Xna.Framework.Graphics.dll</HintPath>
-      <Private>false</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>$(GamePath)\Newtonsoft.Json.dll</HintPath>
-      <Private>false</Private>
     </Reference>
     <Reference Include="xTile">
       <HintPath>$(GamePath)\xTile.dll</HintPath>
-      <Private>false</Private>
     </Reference>
   </ItemGroup>
-
+  
   <ItemGroup>
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.0.0" />
-    <PackageReference Include="OpenAI" Version="1.11.0" />
+    <PackageReference Include="Lib.Harmony" Version="2.2.2" />
   </ItemGroup>
-
-  <Target Name="DeployMod" AfterTargets="Build">
-    <ItemGroup>
-      <ModFiles Include="$(TargetDir)\**\*" Exclude="$(TargetDir)\*.deps.json" />
-    </ItemGroup>
-
-    <Copy SourceFiles="$(TargetDir)\$(TargetName).dll" DestinationFolder="$(ModZipPath)\$(TargetName)" />
-    <Copy SourceFiles="@(ModFiles)" DestinationFolder="$(ModZipPath)\$(TargetName)" />
-    <Copy SourceFiles="manifest.json" DestinationFolder="$(ModZipPath)\$(TargetName)" />
-  </Target>
 </Project>

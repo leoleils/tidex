@@ -32,7 +32,7 @@
       "Action": "EditData",
       "Target": "Data/NPCDispositions",
       "Entries": {
-        "Shary": "female/young/positive/outgoing/polite/Town/shary_monster_girl.png/Shary, the town librarian/45/shary_monster_girl.png"
+        "Shary": "female/young/positive/outgoing/polite/Town/shary_sprite.png/Shary, the town librarian/45/shary_sprite.png"
       }
     },
     {
@@ -46,13 +46,13 @@
       "Action": "EditData",
       "Target": "Data/animationDescriptions",
       "Entries": {
-        "Shary": "4/4/4/4/4/4/4/4/4/4/4/4/false"
+        "Shary": "0/1/0/1/0/1/0/1/2/3/2/3/2/3/2/3/false"
       }
     },
     {
       "Action": "Load",
       "Target": "Portraits/Shary",
-      "FromFile": "assets/shary_portrait.png"
+      "FromFile": "assets/shary_portraits.png"
     },
     {
       "Action": "Load",

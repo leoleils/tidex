@@ -1,8 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
+using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
+using StardewValley.Characters;
+using StardewValley.Locations;
+using StardewValley.Menus;
+using System.Threading.Tasks;
 
 namespace SharySMAPI
 {
@@ -14,14 +21,13 @@ namespace SharySMAPI
         private MemorySystem Memory;
         private QwenIntegration Qwen;
         private bool IsInConversationWithShary = false;
-        private NPC CurrentSharyNpc = null;
         
         public override void Entry(IModHelper helper)
         {
             this.Config = helper.ReadConfig<ModConfig>();
             this.CustomMonitor = this.Monitor;
             this.CustomHelper = helper;
-            this.Memory = new MemorySystem(helper);
+            this.Memory = new MemorySystem(helper, this.Monitor);
             this.Qwen = new QwenIntegration(helper, this.Monitor, this.Memory);
             
             helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
@@ -32,12 +38,6 @@ namespace SharySMAPI
             
             // Register command to view interaction logs
             helper.ConsoleCommands.Add("shary_logs", "View Shary interaction logs. Usage: shary_logs [date] or shary_logs all", this.HandleSharyLogsCommand);
-            
-            var harmony = new Harmony(this.ModManifest.UniqueID);
-            harmony.Patch(
-                original: AccessTools.Method(typeof(DialogueBox), "receiveLeftClick"),
-                postfix: new HarmonyMethod(typeof(ModEntry), nameof(DialogueBox_receiveLeftClick_Postfix))
-            );
         }
         
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
@@ -72,7 +72,7 @@ namespace SharySMAPI
         private void OnWarped(object sender, WarpedEventArgs e)
         {
             // Check if player entered the library
-            if (e.NewLocation is Library)
+            if (e.NewLocation.Name.Equals("Library"))
             {
                 // Check if Shary is in the library
                 var shary = e.NewLocation.characters.FirstOrDefault(c => c.Name == "Shary");
@@ -93,15 +93,14 @@ namespace SharySMAPI
                 if (npc != null && Game1.player.currentLocation.characters.Contains(npc))
                 {
                     // Check if player is close enough to interact
-                    var distance = Utility.distance(Game1.player.Position, npc.Position);
+                    var distance = Utility.distance(Game1.player.Position.X, Game1.player.Position.Y, npc.Position.X, npc.Position.Y);
                     if (distance < 100f)
                     {
                         // Log the interaction
-                        this.Memory.AddInteractionLogEntry("Player", $"Interacted with Shary at {Game1.currentLocation.Name}", "interaction");
+                        this.Memory.AddInteractionLogEntry("Player", $"Interacted with Shary at {Game1.player.currentLocation.Name}", "interaction");
                         
                         // Handle interaction with Qwen integration
                         this.IsInConversationWithShary = true;
-                        this.CurrentSharyNpc = npc;
                         this.HandleSharyInteraction(npc);
                     }
                 }
@@ -114,7 +113,6 @@ namespace SharySMAPI
             if (this.IsInConversationWithShary && Game1.activeClickableMenu == null)
             {
                 this.IsInConversationWithShary = false;
-                this.CurrentSharyNpc = null;
                 this.Memory.AddInteractionLogEntry("System", "Conversation with Shary ended", "conversation_end");
             }
         }
@@ -136,7 +134,7 @@ namespace SharySMAPI
             var friendshipLevel = Game1.player.friendshipData.TryGetValue("Shary", out var friendship) ? friendship.Points : 0;
             
             // Store this interaction in memory
-            this.Memory.AddMemory("interaction", $"Player interacted with Shary at {Game1.currentLocation.Name}", 1.5);
+            this.Memory.AddMemory("interaction", $"Player interacted with Shary at {Game1.player.currentLocation.Name}", 1.5);
             
             // Use Qwen to generate a response based on context and memory
             var context = this.Memory.GetContext();
@@ -149,7 +147,7 @@ namespace SharySMAPI
             var response = await this.Qwen.GenerateStreamingResponse(context, friendshipLevel, (token) => {
                 // Update the dialogue box with each token
                 var currentText = dialogueBox.getCurrentString() ?? "";
-                dialogueBox.finalWords = currentText + token;
+                dialogueBox.dialogues[0] = currentText + token;
             });
             
             // Store the response in memory and dialogue history
@@ -238,11 +236,6 @@ namespace SharySMAPI
             }
         }
         
-        public static void DialogueBox_receiveLeftClick_Postfix(DialogueBox __instance)
-        {
-            // This postfix could be used to enhance dialogue interactions
-        }
-        
         private void TriggerAfternoonWalk()
         {
             // This would implement Shary's afternoon walk behavior
@@ -255,26 +248,6 @@ namespace SharySMAPI
             // This would implement Shary's evening return home behavior
             this.Monitor.Log("Shary is returning home for the evening.", LogLevel.Info);
             this.Memory.AddInteractionLogEntry("System", "Shary is returning home for the evening", "scheduled_event");
-        }
-        
-        // Method to handle resource collection based on friendship level
-        public bool RequestResourceCollection(int friendshipLevel)
-        {
-            // Log the resource collection request
-            this.Memory.AddInteractionLogEntry("Player", "Requested resource collection from Shary", "resource_request");
-            
-            // Determine if Shary will help based on friendship level
-            // Higher friendship = higher chance of helping
-            var chance = Math.Min(100, friendshipLevel / 100); // 0-100 scale
-            var random = new Random();
-            var willHelp = random.Next(100) < chance;
-            
-            // Log the result
-            this.Memory.AddInteractionLogEntry("System", 
-                willHelp ? "Shary agreed to help with resource collection" : "Shary declined to help with resource collection", 
-                "resource_result");
-            
-            return willHelp;
         }
     }
 }

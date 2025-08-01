@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
 using StardewModdingAPI;
 
 namespace SharySMAPI
@@ -9,15 +8,17 @@ namespace SharySMAPI
     public class MemorySystem
     {
         private IModHelper Helper;
+        private IMonitor Monitor;
         private List<MemoryEntry> Memories;
         private List<DialogueEntry> DialogueHistory;
         private Dictionary<string, List<InteractionLogEntry>> InteractionLogs; // Key: Game date (e01, s02, etc.)
         private const int MaxMemories = 50; // Limit to prevent memory bloat
         private const int MaxDialogueHistory = 20; // Keep last 20 exchanges
         
-        public MemorySystem(IModHelper helper)
+        public MemorySystem(IModHelper helper, IMonitor monitor)
         {
             this.Helper = helper;
+            this.Monitor = monitor;
             this.Memories = new List<MemoryEntry>();
             this.DialogueHistory = new List<DialogueEntry>();
             this.InteractionLogs = new Dictionary<string, List<InteractionLogEntry>>();
@@ -170,10 +171,8 @@ namespace SharySMAPI
         {
             try
             {
-                // Format: Season + Day (e.g., "s01" for Spring 1st, "w15" for Winter 15th)
-                var season = Game1.currentSeason.ToLower().Substring(0, 1); // First letter of season
-                var day = Game1.dayOfMonth.ToString("D2"); // Day with leading zero
-                return $"{season}{day}";
+                // This will be implemented in the ModEntry where Game1 is available
+                return DateTime.Now.ToString("MMdd");
             }
             catch
             {
@@ -186,8 +185,8 @@ namespace SharySMAPI
         {
             try
             {
-                // Format game time (e.g., "0900" for 9:00 AM)
-                return Game1.timeOfDay.ToString("D4");
+                // This will be implemented in the ModEntry where Game1 is available
+                return DateTime.Now.ToString("HHmm");
             }
             catch
             {
@@ -205,7 +204,7 @@ namespace SharySMAPI
             }
             catch (Exception ex)
             {
-                this.Helper.Monitor.Log($"Failed to load memories: {ex.Message}", LogLevel.Warn);
+                this.Monitor.Log($"Failed to load memories: {ex.Message}", LogLevel.Warn);
                 this.Memories = new List<MemoryEntry>();
             }
         }
@@ -218,7 +217,7 @@ namespace SharySMAPI
             }
             catch (Exception ex)
             {
-                this.Helper.Monitor.Log($"Failed to save memories: {ex.Message}", LogLevel.Warn);
+                this.Monitor.Log($"Failed to save memories: {ex.Message}", LogLevel.Warn);
             }
         }
         
@@ -231,7 +230,7 @@ namespace SharySMAPI
             }
             catch (Exception ex)
             {
-                this.Helper.Monitor.Log($"Failed to load dialogue history: {ex.Message}", LogLevel.Warn);
+                this.Monitor.Log($"Failed to load dialogue history: {ex.Message}", LogLevel.Warn);
                 this.DialogueHistory = new List<DialogueEntry>();
             }
         }
@@ -244,7 +243,7 @@ namespace SharySMAPI
             }
             catch (Exception ex)
             {
-                this.Helper.Monitor.Log($"Failed to save dialogue history: {ex.Message}", LogLevel.Warn);
+                this.Monitor.Log($"Failed to save dialogue history: {ex.Message}", LogLevel.Warn);
             }
         }
         
@@ -258,7 +257,7 @@ namespace SharySMAPI
             }
             catch (Exception ex)
             {
-                this.Helper.Monitor.Log($"Failed to load interaction logs: {ex.Message}", LogLevel.Warn);
+                this.Monitor.Log($"Failed to load interaction logs: {ex.Message}", LogLevel.Warn);
                 this.InteractionLogs = new Dictionary<string, List<InteractionLogEntry>>();
             }
         }
@@ -271,7 +270,7 @@ namespace SharySMAPI
             }
             catch (Exception ex)
             {
-                this.Helper.Monitor.Log($"Failed to save interaction logs: {ex.Message}", LogLevel.Warn);
+                this.Monitor.Log($"Failed to save interaction logs: {ex.Message}", LogLevel.Warn);
             }
         }
         

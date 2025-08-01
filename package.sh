@@ -15,7 +15,14 @@ cd ..
 # Package SMAPI mod
 echo "Packaging SMAPI mod..."
 cd SharySMAPI
+# Build the project
 dotnet build --configuration Release
+# Create a simple zip with the DLL and manifest
+cd bin/Release/net6.0
+zip -r ../../../../dist/SharySMAPI.zip ./*
+cd ../../..
+cp manifest.json ../dist/
+cp config.json ../dist/ 2>/dev/null || true
 cd ..
 
 echo "Packaging complete!"
