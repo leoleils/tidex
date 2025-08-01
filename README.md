@@ -1,4 +1,4 @@
-# Shary the Librarian - Stardew Valley NPC Mod
+# Shary NPC Mod for Stardew Valley
 
 ## Description
 This mod adds Shary, a 25-year-old librarian NPC to Stardew Valley. She can be found in the town, works at the library, and has a full schedule of activities throughout the day. Players can build a friendship with her, date her, attend festivals together, and even marry her.
@@ -53,7 +53,29 @@ Shary uses the Qwen model (qwen3-235b-a22b-instruct-2507) for dynamic conversati
 To use this feature:
 1. Get an API key from [DashScope](https://dashscope.aliyun.com/)
 2. Enable the qwen3-235b-a22b-instruct-2507 model for your account
-3. Add your API key to the config.json file in the SharySMAPI mod folder
+3. Add your API key to the config.json file
+
+## Configuration
+You can customize the mod behavior by editing the `config.json` file:
+
+```json
+{
+  "EnableQwenIntegration": true,
+  "MinimumFriendshipForHelp": 2000,
+  "QwenApiEndpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "QwenApiKey": "your-api-key-here",
+  "Model": "qwen3-235b-a22b-instruct-2507",
+  "SystemPrompt": "You are Shary, a 25-year-old female librarian in Stardew Valley. You live in the town and work at the library. You are polite, intelligent, and enjoy books and nature. Respond in a way that fits the game's tone and style.",
+  "UserPromptTemplate": "Context: {0}\n\nNote: {1}\n\nPlease respond as Shary in a single, natural sentence that fits the Stardew Valley game style:",
+  "FriendshipNotes": {
+    "NewAcquaintance": "This is a new acquaintance. Keep the conversation polite but reserved.",
+    "DevelopingFriendship": "This is a developing friendship. Be friendly and interested in their activities.",
+    "GoodFriend": "This is a good friend. Be warm and open in your conversation.",
+    "CloseFriend": "This is a close friend with romantic potential. Be affectionate but respectful.",
+    "Spouse": "This is a spouse. Be loving and intimate in your conversation."
+  }
+}
+```
 
 ## Interaction Logging
 All interactions with Shary are automatically logged with timestamps and game context. Logs are organized by game date (e.g., "s01" for Spring 1st) and include:
