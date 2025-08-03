@@ -1,0 +1,118 @@
+TRANSLATIONS LOG:
+
+>> v.1.1.7:
+       Mon4 dialogue wasn't translatable, now it is.
+              "dialogue.Mon4": "Hi, @. How are you doing today?#$e#That's nice to hear!$1",
+              
+----------------------------------------------------------------------------------
+
+>> v.1.1.6:
+       Quinn's display name is now translatable.
+              "Quinn.DisplayName": "Quinn",
+
+       Configs are now translatable!
+              "config.Seasonal cuter Quinn.name": "Seasonal outfits for Quinn",
+              "config.Seasonal cuter Quinn.description": "Seasonal outfits made to go match Poltergeister's 'Seasonal Outfits - Slightly Cuter Aesthetic'.",
+              "config.Has nose.name": "Has nose",
+              "config.Has nose.description": "Nose overlay. 'True' will look closer to vanilla, 'False' will fit alongside Poltergeister's 'Seasonal Outfits - Slightly Cuter Aesthetic'.",
+              "config.New mail paper.name": "New mail paper",
+              "config.New mail paper.description": "Allows Quinn's mail to be sent in custom mail paper. Set to false if there are bugs related to mail form other mods.",
+              "config.Include Quinn in CT.name": "Include Quinn in CT",
+              "config.Include Quinn in CT.description": "Includes Quinn in Emily's 8 Hearts event. This config exists for better compatibility with mods that may change Emily's cutscenes. Extremely miniscule narrative impact.",
+              "config.Meet up day.name": "Meet up day",
+              "config.Meet up day.description": "If you have SVE installed, Quinn and some NPCs might meet up once a month to chat. Standard is every 7th of every month, but feel free to customize it if so needed. Some days are purposefully ommited as to avoid conflicts with characters' schedules and festivals. Note that characters that work will not work if you pick a weekday.",
+              "config.Outfit.name": "Outfit",
+              "config.Outfit.values.Cosplay": "Cosplay",
+              "config.Outfit.values.Fair": "Fair",
+              "config.Outfit.values.Fall": "Fall",
+              "config.Outfit.values.Jellies": "Jellies",
+              "config.Outfit.values.Joja": "Joja",
+              "config.Outfit.values.LakeSwim": "LakeSwim",
+              "config.Outfit.values.Luau": "Luau",
+              "config.Outfit.values.Spring": "Spring",
+              "config.Outfit.values.Summer": "Summer",
+              "config.Outfit.values.Winter": "Winter",
+              "config.Background Color.name": "Background Color",
+              "config.Background Color.values.Ancient": "Ancient",
+              "config.Background Color.values.Brick": "Brick",
+              "config.Background Color.values.Cheesy": "Cheesy",
+              "config.Background Color.values.Cyan": "Cyan",
+              "config.Background Color.values.Dino": "Dino",
+              "config.Background Color.values.Midnight": "Midnight",
+              "config.Background Color.values.Parchment": "Parchment",
+              "config.Background Color.values.PinkCake": "PinkCake",
+              "config.Background Color.values.Plum": "Plum",
+              "config.Background Color.values.Quartz": "Quartz",
+              "config.Background Color.values.Rhubarb": "Rhubarb",
+              "config.Background Color.values.SeaFoam": "SeaFoam",
+              "config.Background Color.values.Shadow": "Shadow",
+              "config.Background Color.values.Shimmer": "Shimmer",
+              "config.Background Color.values.Strawberry": "Strawberry",
+              "config.Background Color.values.Sugar": "Sugar",
+              "config.Background Color.values.Urchin": "Urchin",
+              "config.Background Color.values.Wild": "Wild",
+              "config.Frame Color.name": "Frame Color",
+              "config.Frame Color.values.Baby_Pink": "Baby_Pink",
+              "config.Frame Color.values.Baby_Purple": "Baby_Purple",
+              "config.Frame Color.values.Bamboo": "Bamboo",
+              "config.Frame Color.values.Birch": "Birch",
+              "config.Frame Color.values.Black": "Black",
+              "config.Frame Color.values.Cold_Metal": "Cold_Metal",
+              "config.Frame Color.values.Dark_Metal": "Dark_Metal",
+              "config.Frame Color.values.Green": "Green",
+              "config.Frame Color.values.Mahogany": "Mahogany",
+              "config.Frame Color.values.Oak": "Oak",
+              "config.Frame Color.values.Vanilla": "Vanilla",
+              "config.Frame Color.values.Walnut": "Walnut",
+              "config.Frame Color.values.Wizard_Furniture": "Wizard_Furniture",
+              "config.Is Special Portrait.name": "Is Special Portrait",
+              "config.What Special Portrait.name": "What Special Portrait",
+              "config.What Special Portrait.values.Dancer": "Dancer",
+              "config.What Special Portrait.values.NightSky": "NightSky",
+              "config.What Special Portrait.values.MagicSailor": "MagicSailor",
+              "config.What Special Portrait.values.Cupid": "Cupid",
+              "config.Emily Polyamoury Events.name": "Emily Polyamoury Events",
+              "config.Emily Polyamoury Events.description": "Adds new events if player's in a polycule with both Emily and Quinn. ONE event currently available.",
+              "config.Shane Polyamoury Events.name": "Shane Polyamoury Events",
+              "config.Shane Polyamoury Events.description": "Adds new events if player's in a polycule with both Shane and Quinn. ONE event currently available.",
+              "config.section.Poltergeister's Seasonal Cute Characters Compatibility.name": "Poltergeister's Seasonal Cute Characters Compatibility",
+              "config.section.Poltergeister's Seasonal Cute Characters Compatibility.description": "",
+              "config.section.Generic Fixes.name": "Generic Fixes",
+              "config.section.Generic Fixes.description": "",
+              "config.section.SVE Fixes.name": "SVE Fixes",
+              "config.section.SVE Fixes.description": "",
+              "config.section.Portrait Configs.name": "Portrait Configs",
+              "config.section.Portrait Configs.description": "",
+              "config.section.Extra Content.name": "Extra Content",
+              "config.section.Extra Content.description": "",
+
+       Some lines of dialogue for SVE compatibility weren't in the translation files.
+              "SVEdialogue.Claire.MeetUpDay.1": "A couple of people are meeting tonight for... 'Joja Rehab', as Quinn calls it.#$b#It's fun.$h",
+              "SVEdialogue.Claire.MeetUpDay.2": "A couple of people are meeting tonight for... An 'Employee Hang-out', as Quinn calls it.#$b#It's fun.$h",
+              "SVEdialogue.Shane.MeetUpDay.1": "If it were up to me, I would never host these 'hang-outs'. But aunt Marnie insisted I brought my 'friends' over, so here we are...",
+              "SVEdialogue.Shane.MeetUpDay.2": "These guys are huge nerds...$1",
+              "SVEdialogue.Shane.MeetUpDay.3": "The Spa is a long way up, but I'd say it's totally worth it. If not for the pool, at least for the peace and quiet.",
+              "SVEdialogue.Shane.MeetUpDay.4": "If it were up to me, I would never host these 'rehabs'. But aunt Marnie insisted I brought my 'friends' over, so here we are...",
+              "SVEdialogue.Sam.MeetUpDay": "Man, it's hard to believe these are the same people I met at Joja.#$b#I never thought they could be this much fun.$h",
+
+>> v.1.1.5:
+       No changes made.
+
+>> v.1.1.4:
+
+       NEW I18N KEYS:
+              - "schedule.dialogue.saloon.01": "Hey, @. Nice to see you here tonight. Have you come to drink or dine?#$b#Oof, by the looks of you, probably drink.",
+                     > Used in data/ScheduleDialogue.json. Generic dialogue for some Saloon visits.
+              - "dialogueMar.Good_8": "Good morning, babe. Sleep alright?$1"
+                     > Married dialogue for good relationship
+
+       CHANGES TO EMILY'S CLOTHING THERAPY EVENT IN v1.1.4:
+              - Prior to v1.1.4, the event script had a mistyped translation key(my bad). The event called for '{{i18n:2123243.23}}' when it should've called for '{{i18n:2123243.23Emily}}'. Unless you've noticed this bug before and changed the translation key yourself, you don't have to change anything in your translation file.
+
+       REMOVED DIALOGUE KEYS
+       A bunch of dialogue keys had duplicate values. Here are the ones removed and the one thay stayed.
+              Keys that are no longer used:
+                     x All Spring, Summer and Fall variants of the following keys:
+                            "dialogueMar.Bad_9", "dialogueMar.Rainy_Night_Quinn", "dialogueMar.Bad_8", "dialogueMar.Bad_7", "dialogueMar.Bad_6", "dialogueMar.Bad_5", "dialogueMar.Bad_4", "dialogueMar.Bad_0", "dialogueMar.Bad_1", "dialogueMar.Bad_2", "dialogueMar.Bad_3", "dialogueMar.Neutral_0", "dialogueMar.Neutral_1", "dialogueMar.Neutral_2", "dialogueMar.Neutral_3", "dialogueMar.Neutral_4", "dialogueMar.Neutral_5", "dialogueMar.Neutral_6", "dialogueMar.Neutral_7", "dialogueMar.Neutral_8", "dialogueMar.Neutral_9", "dialogueMar.Good_3", "dialogueMar.TwoKids_4", "dialogueMar.Outdoor_3", "dialogueMar.Indoor_Night_Quinn", "dialogueMarWinter.Indoor_Night_0", "dialogueMar.Good_8", "dialogueMar.Good_5", "dialogueMar.Good_7", "dialogueMar.Good_6"
+                            !!! They were all replaced with their winter specific variants. In v1.1.5, those'll be replaced by season-unespecific keys. For instance, "dialogueMarWinter.Bad_9" will be replaced by "dialogueMar.Bad_9"(removed 'Winter')
+                     x
