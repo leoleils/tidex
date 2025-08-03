@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <GamePath>/Users/chenleiyu/Library/Application Support/Steam/steamapps/common/Stardew Valley/Contents/MacOS</GamePath>
+    <ModZipPath>$(OutputPath)\..\zip</ModZipPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="manifest.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="content.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Dialogues\**" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Assets\**" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Characters\**" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Portraits\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

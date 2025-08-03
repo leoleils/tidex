@@ -1,0 +1,53 @@
+{
+  // Aria's gift preferences (Universal format)
+  "Aria_gift_preferences": "Universal_Love Crops#Universal_Like Forage#Universal_Neutral Artifacts#Universal_Dislike Gems#Universal_Hate Trash",
+  
+  // Aria's basic info and default dialogue
+  "Aria_basic_info": "Aria/adult/neutral/neutral/0/0/Farm/64 16 2/0/0/0/Aria is a kind-hearted young woman who loves gardening and cooking.",
+  
+  // Aria's character configuration
+  "Aria_config": {
+    "DisplayName": "Aria",
+    "Portrait": "Portraits/Aria",
+    "Sprite": "Characters/Aria",
+    "Gender": "Female",
+    "Age": "Adult",
+    "Manner": "Neutral",
+    "SocialAnxiety": "Neutral",
+    "Optimism": "Neutral",
+    "BirthSeason": "spring",
+    "BirthDay": 15,
+    "HomeRegion": "Town",
+    "CanSocialize": true,
+    "CanBeRomanced": false,
+    "CanReceiveGifts": true,
+    "DefaultLocation": "Farm",
+    "DefaultPosition": "64 16",
+    "LoveInterest": "",
+    "Spouse": "",
+    "SpriteAnimationFrames": 4,
+    "SpriteAnimationPixelOffset": {
+      "X": 0,
+      "Y": 0
+    }
+  },
+  
+  // Content loading configuration
+  "Format": "2.7.5",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "data/characters.json, data/dispositions.json, data/gift-tastes.json, data/dialogues.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/Aria",
+      "FromFile": "Characters/Aria.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Portraits/Aria",
+      "FromFile": "Portraits/Aria.png"
+    }
+  ]
+}
