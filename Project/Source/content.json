@@ -1,53 +1,83 @@
 {
-  // Aria's gift preferences (Universal format)
-  "Aria_gift_preferences": "Universal_Love Crops#Universal_Like Forage#Universal_Neutral Artifacts#Universal_Dislike Gems#Universal_Hate Trash",
-  
-  // Aria's basic info and default dialogue
-  "Aria_basic_info": "Aria/adult/neutral/neutral/0/0/Farm/64 16 2/0/0/0/Aria is a kind-hearted young woman who loves gardening and cooking.",
-  
-  // Aria's character configuration
-  "Aria_config": {
-    "DisplayName": "Aria",
-    "Portrait": "Portraits/Aria",
-    "Sprite": "Characters/Aria",
-    "Gender": "Female",
-    "Age": "Adult",
-    "Manner": "Neutral",
-    "SocialAnxiety": "Neutral",
-    "Optimism": "Neutral",
-    "BirthSeason": "spring",
-    "BirthDay": 15,
-    "HomeRegion": "Town",
-    "CanSocialize": true,
-    "CanBeRomanced": false,
-    "CanReceiveGifts": true,
-    "DefaultLocation": "Farm",
-    "DefaultPosition": "64 16",
-    "LoveInterest": "",
-    "Spouse": "",
-    "SpriteAnimationFrames": 4,
-    "SpriteAnimationPixelOffset": {
-      "X": 0,
-      "Y": 0
-    }
-  },
-  
-  // Content loading configuration
-  "Format": "2.7.5",
+  "Format": "1.25",
   "Changes": [
     {
-      "Action": "Include",
-      "FromFile": "data/characters.json, data/dispositions.json, data/gift-tastes.json, data/dialogues.json"
-    },
-    {
+      "LogName": "Load Aria's Characters",
       "Action": "Load",
       "Target": "Characters/Aria",
       "FromFile": "Characters/Aria.png"
     },
     {
+      "LogName": "Load Aria's Portraits",
       "Action": "Load",
       "Target": "Portraits/Aria",
       "FromFile": "Portraits/Aria.png"
+    },
+    {
+      "LogName": "Load Aria's Dialogue",
+      "Action": "Load",
+      "Target": "Characters/Dialogue/Aria",
+      "FromFile": "data/dialogues.json"
+    },
+    {
+      "LogName": "Load Aria's Schedule",
+      "Action": "Load",
+      "Target": "Characters/schedules/Aria",
+      "FromFile": "data/schedule.json"
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/Characters",
+      "Entries": {
+        "Aria": {
+          "DisplayName": "Aria",
+          "BirthSeason": "spring",
+          "BirthDay": 15,
+          "HomeRegion": "Town",
+          "Gender": "Female",
+          "Age": "Adult",
+          "Manner": "Neutral",
+          "SocialAnxiety": "Neutral",
+          "Optimism": "Neutral",
+          "IsDarkSkinned": false,
+          "CanBeRomanced": false,
+          "LoveInterest": "Read",
+          "Calendar": "AlwaysShown",
+          "SocialTab": "AlwaysShown",
+          "CanSocialize": true,
+          "CanReceiveGifts": true,
+          "CanGreetNearbyCharacters": true,
+          "CanCommentOnPurchasedShopItems": true,
+          "CanVisitIsland": true,
+          "IntroductionsQuest": true,
+          "PerfectionScore": true,
+          "EndSlideShow": "MainGroup",
+          "SpouseGiftJealousy": false,
+          "Home": [
+            {
+              "Id": "Default",
+              "Location": "ArchaeologyHouse",
+              "Tile": {
+                "X": 11,
+                "Y": 9
+              },
+              "Direction": "down"
+            }
+          ],
+          "FlowerDanceCanDance": false,
+          "WinterStarGifts": "",
+          "WinterStarParticipant": true,
+          "SpawnIfMissing": true,
+          "Appearance": [
+            {
+              "Id": "Aria_Default",
+              "Portrait": "Portraits/Aria",
+              "Sprite": "Characters/Aria",
+              "Precedence": 0
+            }
+          ]
+        }
+      }
     }
   ]
 }

@@ -1,31 +1,13 @@
 {
-  "Changes": [
-    {
-      "Action": "EditData",
-      "Target": "Characters/Dialogue/Aria",
-      "Entries": {
-        "Introduction": "Hello there, farmer! Welcome to my little corner of the valley.$b#I've been working on some new recipes with seasonal ingredients.",
-        "Default": "The weather is perfect for growing crops today!$b#I planted some new experimental seeds this morning.",
-        "Mon": "Have you visited the local market recently?$b#They got in some fresh seafood from the coast.",
-        "Tue": "I love this time of year when the flowers are blooming.$b#It reminds me of my grandmother's garden.",
-        "Wed": "Working the land is so peaceful.$b#It helps me think and reflect on life.",
-        "Thu": "I've been reading about ancient farming techniques.$b#Some of them might be useful even today.",
-        "Fri": "Do you grow any rare crops?$b#I'm always looking to expand my knowledge of unusual plants.",
-        "Sat": "I heard there's a festival coming up soon.$b#I'm planning to enter my prize-winning pumpkins.",
-        "Sun": "Finding the right balance in soil nutrients is crucial.$b#I can help you with your fertilizing strategy if you'd like.",
-        "spring": "I love trading recipes with other cooks in town.$b#Would you like me to teach you how to make my famous berry pie?",
-        "summer": "I'm so happy with how my garden is turning out!$b#The tomatoes are growing beautifully this season.",
-        "fall": "The autumn harvest is always my favorite time of year.$b#So much fresh produce to work with!",
-        "winter": "Even in winter, there's much to do for a farmer.$b#Planning next year's crops and maintaining equipment.",
-        "Rain": "The rain is good for the crops, but it makes working outside rather difficult.$b#Perfect day to experiment with new recipes indoors.",
-        "Snow": "I don't mind the snow too much.$b#It gives me time to work on my cooking and plan for spring planting.",
-        "Angry": "I'm absolutely furious about the new taxes on farming supplies!$b#How are we supposed to make a living?",
-        "Happy": "Haha! Did you see Pierre's face when I offered to buy his entire stock of starfruit?$b#Priceless!",
-        "Sad": "I feel so sad about my failed cauliflower crop this season.$b#I put so much effort into it, but it was all for nothing.",
-        "Crying": "I'm crying over the loss of my favorite strawberry plants to pests.$b#They were my grandmother's original seeds.",
-        "Love": "I really like your farming style!$b#You have a real green thumb.",
-        "Playing": "I enjoy spending time in my garden$b#It's so relaxing after a busy day."
-      }
-    }
-  ]
+    "Introduction": "I'm Aria, the town librarian.$b#I've been organizing books and researching new recipes with seasonal ingredients.$h#",
+    "Mon": "I spent the morning cataloging new arrivals at the library.$h#$b#There's a fascinating book on ancient farming techniques you might enjoy.",
+    "Tue": "I love this time of year when the flowers are blooming.$l#$b#It reminds me of the botanical illustrations in my grandmother's books.",
+    "Wed": "Reading is so peaceful.$b#It helps me think and reflect on life, just like tending a garden.",
+    "Thu": "I've been researching local folklore and legends.$b#Some of them might have useful information about farming practices.",
+    "Fri": "Do you read much?$b#I'm always looking to expand my knowledge of different subjects.",
+    "Sat": "I heard there's a festival coming up soon.$u#$b#I'm planning to write an article about its historical significance for the library.",
+    "Aria_greet": "Good morning, @! Beautiful day for farming, isn't it?",
+    "Aria_read": "These books on agriculture are quite fascinating. I've been learning so much about soil composition and crop rotation.",
+    "Aria_think": "I wonder if I should try planting some new herbs this season...",
+    "Aria_relax": "It's so peaceful here. A perfect place to read and reflect."
 }
