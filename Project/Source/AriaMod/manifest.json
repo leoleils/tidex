@@ -10,7 +10,11 @@
   "Dependencies": [
     {
       "UniqueID": "Pathoschild.ContentPatcher",
-      "IsRequired": false
+      "IsRequired": true
+    },
+    {
+      "UniqueID": "leo.CustomNPC",
+      "IsRequired": true
     }
   ]
 }
