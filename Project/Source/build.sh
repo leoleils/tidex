@@ -3,7 +3,7 @@
 # Build script for Aria NPC mods
 
 # Create output directory
-mkdir -p "./zip"
+mkdir -p "./Release"
 
 # Build the AriaMod (AI enhancement)
 echo "Building AriaMod..."
@@ -20,24 +20,24 @@ fi
 echo "Creating AriaMod package..."
 
 # Create directory structure
-mkdir -p "../zip/AriaMod"
+mkdir -p "../Release/AriaMod"
 
 # Copy built files
-cp -r "./bin/Release/net6.0/"* "../zip/AriaMod/"
+cp -r "./bin/Release/net6.0/"* "../Release/AriaMod/"
 
 # Copy manifest and config files
-cp "manifest.json" "../zip/AriaMod/"
-cp "config.json" "../zip/AriaMod/"
+cp "manifest.json" "../Release/AriaMod/"
+cp "config.json" "../Release/AriaMod/"
 
 # Go back to Source directory
 cd ".."
 
 # Copy the base [CP]Aria mod
 echo "Copying [CP]Aria base mod..."
-cp -r "./[CP]Aria" "../zip/"
+cp -r "./[CP]Aria" "../Release/"
 
 # Create the final zip files
-cd "../zip"
+cd "../Release"
 if [ -d "AriaMod" ]; then
     zip -r "AriaMod.zip" "AriaMod"
 fi
@@ -49,8 +49,8 @@ fi
 echo "Build completed successfully!"
 echo "Created packages:"
 if [ -f "AriaMod.zip" ]; then
-    echo "  - zip/AriaMod.zip (AI enhancement mod)"
+    echo "  - Release/AriaMod.zip (AI enhancement mod)"
 fi
 if [ -f "Aria.zip" ]; then
-    echo "  - zip/Aria.zip (Base NPC mod)"
+    echo "  - Release/Aria.zip (Base NPC mod)"
 fi
