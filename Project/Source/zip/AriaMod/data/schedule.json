@@ -1,0 +1,7 @@
+{
+  "spring": "810 ArchaeologyHouse 11 9 2 Aria_greet/0830 ArchaeologyHouse 11 9 2 Aria_ai_interaction/1000 Town 30 70 2 /1200 Town 25 65 2 /1400 Beach 10 10 2 /1600 Forest 20 20 2 /1800 Town 25 65 2 /2000 ArchaeologyHouse 11 9 2 ",
+  "summer": "810 ArchaeologyHouse 11 9 2 Aria_read/0830 ArchaeologyHouse 11 9 2 Aria_ai_interaction/1000 Town 32 72 2 /1200 Beach 15 15 2 /1400 Town 25 65 2 /1600 Forest 25 25 2 /1800 Town 30 70 2 /2000 ArchaeologyHouse 11 9 2 ",
+  "fall": "810 ArchaeologyHouse 11 9 2 Aria_think/0830 ArchaeologyHouse 11 9 2 Aria_ai_interaction/1000 Forest 30 30 2 /1200 Town 25 65 2 /1400 Beach 20 20 2 /1600 Town 32 72 2 /1800 Forest 25 25 2 /2000 ArchaeologyHouse 11 9 2 ",
+  "winter": "810 ArchaeologyHouse 11 9 2 /0830 ArchaeologyHouse 11 9 2 Aria_ai_interaction/1000 Town 32 72 2 /1200 Town 25 65 2 /1400 Town 30 70 2 /1600 Town 25 65 2 /1800 ArchaeologyHouse 11 9 2 /2000 ArchaeologyHouse 11 9 2 ",
+  "Web": "900 SeedShop 9 5 0/1100 SeedShop 13 20 0/1300 SeedShop 39 5 0/0830 ArchaeologyHouse 11 9 2 Aria_ai_interaction/1500 SeedShop 7 9 2/1700 Town 25 65 2/1900 SeedShop 6 4 0/2000 ArchaeologyHouse 11 9 2"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "apikey": "sk-dde10dec79bd43ffb1cd3f3371fe5377",
+  "model": "qwen3-30b-a3b"
+}

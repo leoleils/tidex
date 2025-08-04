@@ -1,0 +1,7 @@
+{
+  "spring": "810 ArchaeologyHouse 11 9 2 Aria_greet/1200 Town 30 70 2 /1800 Town 25 65 2 /2200 ArchaeologyHouse 11 9 2 ",
+  "summer": "810 ArchaeologyHouse 11 9 2 Aria_read/1200 Town 32 72 2 /1800 Town 25 65 2 /2200 ArchaeologyHouse 11 9 2 ",
+  "fall": "810 ArchaeologyHouse 11 9 2 Aria_think/1200 Town 30 70 2 /1800 Town 27 67 2 /2200 ArchaeologyHouse 11 9 2 ",
+  "winter": "810 ArchaeologyHouse 11 9 2 /1200 Town 32 72 2 /1800 Town 25 65 2 /2200 ArchaeologyHouse 11 9 2 ",
+  "Web": "900 SeedShop 9 5 0/1100 SeedShop 13 20 0/1300 SeedShop 39 5 0/1500 SeedShop 7 9 2/1900 SeedShop 6 4 0/2200 ArchaeologyHouse 11 9 2"
+}

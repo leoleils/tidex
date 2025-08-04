@@ -1,0 +1,13 @@
+{
+    "Introduction": "I'm Aria, the town librarian.$neutral#$b#I've been organizing books and researching new recipes with seasonal ingredients.$h#",
+    "Mon": "I spent the morning cataloging new arrivals at the library.$h#$b#There's a fascinating book on ancient farming techniques you might enjoy.",
+    "Tue": "I love this time of year when the flowers are blooming.$l#$b#It reminds me of the botanical illustrations in my grandmother's books.",
+    "Wed": "Reading is so peaceful.$b#It helps me think and reflect on life, just like tending a garden.",
+    "Thu": "I've been researching local folklore and legends.$b#Some of them might have useful information about farming practices.",
+    "Fri": "Do you read much?$b#I'm always looking to expand my knowledge of different subjects.",
+    "Sat": "I heard there's a festival coming up soon.$u#$b#I'm planning to write an article about its historical significance for the library.",
+    "Aria_greet": "Good morning, @! Beautiful day for farming, isn't it?",
+    "Aria_read": "These books on agriculture are quite fascinating. I've been learning so much about soil composition and crop rotation.",
+    "Aria_think": "I wonder if I should try planting some new herbs this season...",
+    "Aria_relax": "It's so peaceful here. A perfect place to read and reflect."
+}

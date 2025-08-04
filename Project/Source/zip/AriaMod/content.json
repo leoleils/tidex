@@ -1,0 +1,83 @@
+{
+  "Format": "1.25",
+  "Changes": [
+    {
+      "LogName": "Load Aria's Characters",
+      "Action": "Load",
+      "Target": "Characters/Aria",
+      "FromFile": "Characters/Aria.png"
+    },
+    {
+      "LogName": "Load Aria's Portraits",
+      "Action": "Load",
+      "Target": "Portraits/Aria",
+      "FromFile": "Portraits/Aria.png"
+    },
+    {
+      "LogName": "Load Aria's Dialogue",
+      "Action": "Load",
+      "Target": "Characters/Dialogue/Aria",
+      "FromFile": "data/dialogues.json"
+    },
+    {
+      "LogName": "Load Aria's Schedule",
+      "Action": "Load",
+      "Target": "Characters/schedules/Aria",
+      "FromFile": "data/schedule.json"
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/Characters",
+      "Entries": {
+        "Aria": {
+          "DisplayName": "Aria",
+          "BirthSeason": "spring",
+          "BirthDay": 15,
+          "HomeRegion": "Town",
+          "Gender": "Female",
+          "Age": "Adult",
+          "Manner": "Neutral",
+          "SocialAnxiety": "Neutral",
+          "Optimism": "Neutral",
+          "IsDarkSkinned": false,
+          "CanBeRomanced": false,
+          "LoveInterest": "Read",
+          "Calendar": "AlwaysShown",
+          "SocialTab": "AlwaysShown",
+          "CanSocialize": true,
+          "CanReceiveGifts": true,
+          "CanGreetNearbyCharacters": true,
+          "CanCommentOnPurchasedShopItems": true,
+          "CanVisitIsland": true,
+          "IntroductionsQuest": true,
+          "PerfectionScore": true,
+          "EndSlideShow": "MainGroup",
+          "SpouseGiftJealousy": false,
+          "Home": [
+            {
+              "Id": "Default",
+              "Location": "ArchaeologyHouse",
+              "Tile": {
+                "X": 11,
+                "Y": 9
+              },
+              "Direction": "down"
+            }
+          ],
+          "FlowerDanceCanDance": false,
+          "WinterStarGifts": "",
+          "WinterStarParticipant": true,
+          "SpawnIfMissing": true,
+          "Appearance": [
+            {
+              "Id": "Aria_Default",
+              "Portrait": "Portraits/Aria",
+              "Sprite": "Characters/Aria",
+              "Precedence": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
