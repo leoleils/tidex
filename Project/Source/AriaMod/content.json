@@ -78,15 +78,6 @@
           ]
         }
       }
-    },
-    {
-      "LogName": "Add Aria AI Dialogue Token",
-      "Action": "EditData",
-      "Target": "Characters/Dialogue/Aria",
-      "Entries": {
-        "Aria_ai_greet": "{{leo.AriaAI/AriaResponse}}",
-        "Aria_ai_chat": "{{leo.AriaAI/AriaResponse}}"
-      }
     }
   ]
 }

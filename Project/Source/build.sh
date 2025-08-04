@@ -1,39 +1,52 @@
 #!/bin/bash
 
-# Define base directory
-BASE_DIR="/Users/chenleiyu/Desktop/tidex/Project/Source"
+# Build script for Aria AI mod
 
-# Clean previous builds
-echo "Cleaning previous builds..."
-rm -rf "$BASE_DIR/zip/[CP]Aria.zip"
+# Navigate to the mod directory
+cd "$(dirname "$0")/AriaMod"
 
-# Create temporary directory for packaging
-TEMP_DIR="$BASE_DIR/temp_packaging"
-rm -rf "$TEMP_DIR"
-mkdir -p "$TEMP_DIR/[CP]Aria/data"
-mkdir -p "$TEMP_DIR/[CP]Aria/Characters"
-mkdir -p "$TEMP_DIR/[CP]Aria/Portraits"
+# Set the mod name
+MOD_NAME="AriaMod"
 
-# Create necessary directories
-echo "Creating directories..."
-mkdir -p "$BASE_DIR/zip"
+# Create output directory
+mkdir -p "../zip"
 
-# Copy assets
-echo "Copying assets..."
-cp -r "$BASE_DIR/Characters/"* "$TEMP_DIR/[CP]Aria/Characters/"
-cp -r "$BASE_DIR/Portraits/"* "$TEMP_DIR/[CP]Aria/Portraits/"
-cp -r "$BASE_DIR/data/"* "$TEMP_DIR/[CP]Aria/data/"
-cp "$BASE_DIR/manifest.json" "$TEMP_DIR/[CP]Aria/"
-cp "$BASE_DIR/content.json" "$TEMP_DIR/[CP]Aria/"
+# Build the project
+echo "Building $MOD_NAME..."
+dotnet build -c Release
 
-# Create zip package
-echo "Creating zip package..."
-cd "$TEMP_DIR"
-zip -r "$BASE_DIR/zip/[CP]Aria.zip" "[CP]Aria"
+# Check if build was successful
+if [ $? -ne 0 ]; then
+    echo "Build failed!"
+    exit 1
+fi
 
-# Clean up temporary directory
-rm -rf "$TEMP_DIR"
+# Create the mod package
+echo "Creating mod package..."
 
-echo "Build completed successfully!"
-echo "The packaged mod is located in the zip/ directory as [CP]Aria.zip"
-echo "To install, extract the zip file to your Stardew Valley Mods directory"
+# Create directory structure
+mkdir -p "../zip/$MOD_NAME"
+
+# Copy built files (fixing the path issue)
+if [ -d "./bin/Release/net6.0/" ]; then
+    cp -r "./bin/Release/net6.0/"* "../zip/$MOD_NAME/"
+else
+    echo "Error: Could not find built files in ./bin/Release/net6.0/"
+    exit 1
+fi
+
+# Copy content files
+cp -r "./Characters" "../zip/$MOD_NAME/"
+cp -r "./data" "../zip/$MOD_NAME/"
+cp -r "./Portraits" "../zip/$MOD_NAME/"
+
+# Copy manifest and content files
+cp "manifest.json" "../zip/$MOD_NAME/"
+cp "content.json" "../zip/$MOD_NAME/"
+cp "config.json" "../zip/$MOD_NAME/"
+
+# Create the final zip file
+cd "../zip"
+zip -r "${MOD_NAME}.zip" "$MOD_NAME"
+
+echo "Build completed successfully! Mod package created: zip/${MOD_NAME}.zip"

@@ -1,0 +1,8 @@
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/obj/Release/net6.0/AriaMod.csproj.AssemblyReference.cache
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/obj/Release/net6.0/AriaMod.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/obj/Release/net6.0/AriaMod.AssemblyInfoInputs.cache
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/obj/Release/net6.0/AriaMod.AssemblyInfo.cs
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/obj/Release/net6.0/AriaMod.csproj.CoreCompileInputs.cache
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/bin/Release/net6.0/AriaMod.deps.json
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/bin/Release/net6.0/AriaMod.dll
+/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/obj/Release/net6.0/AriaMod.dll

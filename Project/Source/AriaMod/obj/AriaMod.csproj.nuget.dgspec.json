@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/AriaMod.csproj": {}
+  },
+  "projects": {
+    "/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/AriaMod.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/AriaMod.csproj",
+        "projectName": "AriaMod",
+        "projectPath": "/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/AriaMod.csproj",
+        "packagesPath": "/Users/chenleiyu/.nuget/packages/",
+        "outputPath": "/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/chenleiyu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Pathoschild.Stardew.ModBuildConfig": {
+              "target": "Package",
+              "version": "[4.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.428/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

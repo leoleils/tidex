@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VYG8lI1O73hpsXw4vgKUoBBnvK1YFvYxDU4JYTRj69hMV5O46P9+6FfRSZSFUbIAd2lywnkhp7ZuZxs3w1biTQ==",
+  "success": true,
+  "projectFilePath": "/Users/chenleiyu/Desktop/tidex/Project/Source/AriaMod/AriaMod.csproj",
+  "expectedPackageFiles": [
+    "/Users/chenleiyu/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/chenleiyu/.nuget/packages/pathoschild.stardew.modbuildconfig/4.1.1/pathoschild.stardew.modbuildconfig.4.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}
