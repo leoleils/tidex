@@ -6,9 +6,13 @@
     "Thu": "I've been researching local folklore and legends.#$b#Some of them might have useful information about farming practices.",
     "Fri": "Do you read much?#$b#I'm always looking to expand my knowledge of different subjects.",
     "Sat": "I heard there's a festival coming up soon.$u#$b#I'm planning to write an article about its historical significance for the library.",
+    "Sun": "Weekends are for exploring new places and meeting interesting people.#$b#There's always something to learn from others' experiences.",
     "Aria_greet": "Good morning, @! Beautiful day for farming, isn't it?",
     "Aria_read": "These books on agriculture are quite fascinating. I've been learning so much about soil composition and crop rotation.",
     "Aria_think": "I wonder if I should try planting some new herbs this season...",
     "Aria_relax": "It's so peaceful here. A perfect place to read and reflect.",
-    "Aria_ai_interaction": "Hello, @! I'm currently researching some interesting topics. What would you like to chat about?"
+    "Aria_beach": "The sound of the waves is so calming. It's a nice change from the quiet library.",
+    "Aria_forest": "The forest has such rich biodiversity. I'm collecting samples for a book on local plant life.",
+    "Aria_town": "The town is bustling with activity today. Always interesting to see what everyone is up to.",
+    "Aria_ai_interaction": "Hello, @! I was just thinking about how interesting our conversation could be."
 }

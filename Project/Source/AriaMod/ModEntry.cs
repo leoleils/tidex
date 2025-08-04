@@ -24,6 +24,7 @@ namespace AriaMod
         private bool _isGeneratingResponse = false;
         private int _lastUpdateDay = -1;
         private bool _hasGeneratedResponse = false; // Prevent infinite loops
+        private int _interactionCount = 0; // Track number of interactions per day
 
         /*********
         ** Public methods
@@ -47,6 +48,7 @@ namespace AriaMod
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Display.MenuChanged += OnMenuChanged;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.Player.Warped += OnPlayerWarped;
             
             this.Monitor.Log("Aria AI mod loaded successfully!", LogLevel.Info);
         }
@@ -77,12 +79,25 @@ namespace AriaMod
             {
                 _lastUpdateDay = Game1.Date.TotalDays;
                 _hasGeneratedResponse = false; // Reset the flag each day
+                _interactionCount = 0; // Reset interaction count
             }
             
             // Check if Aria should approach the player (8:30am to 9:30am)
             if (IsAIInteractionTime())
             {
                 TryApproachPlayer();
+            }
+        }
+
+        /// <summary>Raised after the player moves to a new location.</summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event data.</param>
+        private void OnPlayerWarped(object sender, StardewModdingAPI.Events.WarpedEventArgs e)
+        {
+            // Check if Aria is in the same location as the player
+            if (e.NewLocation != null && e.Player == Game1.player)
+            {
+                TryLocationBasedInteraction(e.NewLocation);
             }
         }
 
@@ -174,6 +189,52 @@ namespace AriaMod
             }
         }
 
+        /// <summary>Try location-based interaction when player warps to a new location.</summary>
+        /// <param name="location">The location the player warped to.</param>
+        private async void TryLocationBasedInteraction(GameLocation location)
+        {
+            try
+            {
+                // Only interact if we haven't reached the daily limit (max 3 interactions per day)
+                if (_interactionCount >= 3)
+                    return;
+                    
+                // Check if Aria is in the same location
+                if (location.characters.Any(npc => npc.Name.Equals("Aria", StringComparison.OrdinalIgnoreCase)))
+                {
+                    // 30% chance to initiate conversation when player enters a location where Aria is present
+                    if (new Random().Next(100) < 30)
+                    {
+                        // Build context information
+                        var context = new Dictionary<string, string>
+                        {
+                            ["Time"] = Game1.timeOfDay.ToString(),
+                            ["Season"] = Game1.currentSeason,
+                            ["DayOfWeek"] = Game1.dayOfMonth.ToString(),
+                            ["PlayerName"] = Game1.player.Name,
+                            ["Location"] = location.Name,
+                            ["InteractionType"] = "LocationBased"
+                        };
+
+                        // Generate a location-appropriate greeting from AI
+                        var response = await _ariaAI.GenerateResponse(
+                            $"I'm at {location.Name} and I see the player has just arrived. I'll greet them with something relevant to this location.", 
+                            context
+                        );
+                        
+                        // Show the dialogue to the player
+                        Game1.drawDialogueNoTyping(response.Dialogue);
+                        this.Monitor.Log($"Aria initiated location-based interaction: {response.Dialogue}", LogLevel.Info);
+                        _interactionCount++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Monitor.Log($"Error in TryLocationBasedInteraction: {ex.Message}", LogLevel.Error);
+            }
+        }
+
         /// <summary>Raised after a game menu is opened or closed.</summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event data.</param>
@@ -184,11 +245,12 @@ namespace AriaMod
                 Game1.currentSpeaker != null && 
                 Game1.currentSpeaker.Name.Equals("Aria", StringComparison.OrdinalIgnoreCase))
             {
-                // Only generate a response if we haven't already done so today
-                if (!_hasGeneratedResponse)
+                // Only generate a response if we haven't already done so today or if it's a new interaction
+                if (!_hasGeneratedResponse || _interactionCount < 3)
                 {
                     _isSpeakingWithAria = true;
                     _hasGeneratedResponse = true; // Mark that we've generated a response
+                    _interactionCount++; // Increment interaction count
                     this.Monitor.Log("Player is speaking with Aria", LogLevel.Info);
                     
                     // Cancel any previous response generation
@@ -234,7 +296,8 @@ namespace AriaMod
                     ["Season"] = Game1.currentSeason,
                     ["DayOfWeek"] = Game1.dayOfMonth.ToString(),
                     ["PlayerName"] = Game1.player.Name,
-                    ["Location"] = Game1.player.currentLocation?.Name ?? "Unknown"
+                    ["Location"] = Game1.player.currentLocation?.Name ?? "Unknown",
+                    ["InteractionCount"] = _interactionCount.ToString()
                 };
                 
                 // Add conversation history if available
@@ -292,7 +355,7 @@ namespace AriaMod
                 }
                 
                 // Show the new dialogue text
-                Game1.drawDialogueNoTyping(newText + "$h#$b#");
+                Game1.drawDialogueNoTyping(newText);
             }
             catch (Exception ex)
             {

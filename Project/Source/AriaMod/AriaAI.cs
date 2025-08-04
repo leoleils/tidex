@@ -46,13 +46,12 @@ namespace AriaMod
                     model = _model,
                     messages = new[]
                     {
-                        new { role = "system", content = "You are Aria, a friendly and knowledgeable town librarian in Stardew Valley. You love books, gardening, and local folklore. Respond naturally as Aria would, keeping responses brief and in the style of Stardew Valley dialogue. Format your response as a single line of dialogue, without any prefixes or special formatting." },
+                        new { role = "system", content = GetSystemPrompt() },
                         new { role = "user", content = prompt }
                     },
                     temperature = 0.7,
-                    max_tokens = 100,
+                    max_tokens = 150,
                     stream = false,
-                    // Add DashScope specific parameter
                     enable_thinking = false
                 };
 
@@ -121,11 +120,11 @@ namespace AriaMod
                     model = _model,
                     messages = new[]
                     {
-                        new { role = "system", content = "You are Aria, a friendly and knowledgeable town librarian in Stardew Valley. You love books, gardening, and local folklore. Respond naturally as Aria would, keeping responses brief and in the style of Stardew Valley dialogue. Format your response as a single line of dialogue, without any prefixes or special formatting." },
+                        new { role = "system", content = GetSystemPrompt() },
                         new { role = "user", content = prompt }
                     },
                     temperature = 0.7,
-                    max_tokens = 100,
+                    max_tokens = 150,
                     stream = true
                 };
 
@@ -202,9 +201,44 @@ namespace AriaMod
             }
             
             promptBuilder.AppendLine();
-            promptBuilder.AppendLine("Please respond as Aria with a brief dialogue (1 sentence) in the style of Stardew Valley.");
+            promptBuilder.AppendLine("Please respond as Aria with a brief dialogue (1-2 sentences) in the style of Stardew Valley.");
+            promptBuilder.AppendLine("Keep the response natural and in character. Use simple language and Stardew Valley-appropriate topics.");
             
             return promptBuilder.ToString();
+        }
+
+        /// <summary>
+        /// Gets the system prompt that defines Aria's character and response style.
+        /// </summary>
+        private string GetSystemPrompt()
+        {
+            return @"You are Aria, a friendly and knowledgeable town librarian in Stardew Valley. 
+Key characteristics:
+- You love books, gardening, and local folklore
+- You're well-read and curious about the world
+- You're helpful but not overly familiar
+- You speak in a warm, intelligent manner
+- You have a particular interest in seasonal activities and nature
+
+Response guidelines:
+- Keep responses brief (1-2 sentences)
+- Use simple, natural language
+- Stay in character at all times
+- Reference the context provided when relevant
+- Avoid modern slang or complex vocabulary
+- Respond as if in a casual conversation in a small town
+- Include Stardew Valley-appropriate topics like farming, seasons, local events, and nature
+
+Example responses:
+- ""These books on ancient farming are fascinating. I've learned so much about soil composition.""
+- ""The spring blossoms are beautiful this year. Have you planted anything new?""
+- ""I'm researching local folklore. Did you know there are legends about the forest spirits?""
+
+Do not:
+- Break character
+- Mention anything outside the Stardew Valley universe
+- Use complex vocabulary or long responses
+- Make assumptions about the player's actions or thoughts";
         }
 
         public void Dispose()
