@@ -1,0 +1,62 @@
+# Aria NPC Mod for Stardew Valley
+
+This mod adds a new NPC named Aria to Stardew Valley. Aria is a town librarian who can be found in various locations around Pelican Town.
+
+## Features
+
+- Adds Aria, a unique NPC character to the game
+- Custom sprite and portrait artwork
+- Daily dialogue lines for different days of the week
+- Location schedule for all seasons
+- Integration with Content Patcher framework
+
+## Installation
+
+1. Install [SMAPI](https://smapi.io/) - the mod loader for Stardew Valley
+2. Install [Content Patcher](https://www.nexusmods.com/stardewvalley/mods/1915) by Pathoschild
+3. Download this mod and unzip it into your Stardew Valley Mods folder
+4. Run the game using SMAPI
+
+## Character Information
+
+- **Name**: Aria
+- **Occupation**: Town Librarian
+- **Birthday**: Spring 15th
+- **Home Region**: Town
+- **Gender**: Female
+- **Age**: Adult
+- **Personality**: Neutral manner, social anxiety, and optimism
+
+## Schedule
+
+Aria follows a daily schedule that varies by season:
+
+- **Spring**: Starts at the Archaeology House, then visits various locations in town during the day
+- **Summer**: Similar pattern with different dialogue and locations
+- **Fall**: Different routine with unique dialogue
+- **Winter**: Indoor-focused schedule due to weather
+- **Festival Days**: Special schedule for events like the Egg Festival
+
+## Dialogue
+
+Aria has unique dialogue for:
+- Initial introduction
+- Each day of the week
+- Special interactions when the player is nearby
+
+Sample dialogue includes topics about:
+- Library work and book cataloging
+- Gardening and farming techniques
+- Local folklore and legends
+- Seasonal activities and observations
+
+## Dependencies
+
+- Stardew Valley
+- SMAPI
+- Content Patcher
+
+## Credits
+
+- Created by leo
+- Uses Content Patcher framework for integration with the game
