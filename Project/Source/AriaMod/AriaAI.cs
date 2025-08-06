@@ -18,13 +18,16 @@ namespace AriaMod
         private readonly string _apiKey;
         private readonly string _model;
         private readonly HttpClient _httpClient;
+        private readonly ModConfig _config;
 
-        public AriaAI(string apiUrl, string apiKey, string model)
+        public AriaAI(string apiUrl, string apiKey, string model, ModConfig config)
         {
             _apiUrl = apiUrl;
             _apiKey = apiKey;
             _model = model;
+            _config = config;
             _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _apiKey);
         }
 
         /// <summary>
@@ -76,12 +79,17 @@ namespace AriaMod
                 var responseJson = JsonConvert.DeserializeObject<ApiResponse>(responseContent);
                 var aiMessage = responseJson.choices[0].message.content.Trim();
 
-                // For this implementation, we'll just return the AI message as dialogue
-                // A more advanced implementation would parse choices from the response
+                // Try to parse choices from the response, or generate default ones
+                List<string> choices = ParseChoicesFromResponse(aiMessage);
+                if (choices.Count == 0)
+                {
+                    choices = GenerateDefaultChoices();
+                }
+
                 return new AriaResponse
                 {
-                    Dialogue = aiMessage,
-                    Choices = new List<string> { "That's interesting.", "Tell me more.", "I should go now." }
+                    Dialogue = CleanDialogueText(aiMessage),
+                    Choices = choices
                 };
             }
             catch (Exception ex)
@@ -90,7 +98,7 @@ namespace AriaMod
                 return new AriaResponse
                 {
                     Dialogue = $"I'm sorry, I didn't quite catch that. Could you repeat it? (Error: {ex.Message})",
-                    Choices = new List<string> { "Sure!", "Never mind." }
+                    Choices = GenerateDefaultChoices()
                 };
             }
         }
@@ -191,6 +199,23 @@ namespace AriaMod
         private string BuildPrompt(string playerMessage, Dictionary<string, string> context)
         {
             var promptBuilder = new StringBuilder();
+            
+            // Use configured prompt template if available
+            string promptTemplate = null;
+            if (_config?.PromptProfiles?.ContainsKey(_config.ActivePromptProfile) == true)
+            {
+                promptTemplate = _config.PromptProfiles[_config.ActivePromptProfile].Default;
+            }
+
+            // Replace placeholders in prompt template
+            if (!string.IsNullOrEmpty(promptTemplate))
+            {
+                promptTemplate = promptTemplate
+                    .Replace("{time}", context.ContainsKey("Time") ? context["Time"] : "this time")
+                    .Replace("{location}", context.ContainsKey("Location") ? context["Location"] : "here")
+                    .Replace("{season}", context.ContainsKey("Season") ? context["Season"] : "this season");
+            }
+
             promptBuilder.AppendLine($"Player says to Aria: \"{playerMessage}\"");
             promptBuilder.AppendLine();
             promptBuilder.AppendLine("Context information:");
@@ -201,8 +226,19 @@ namespace AriaMod
             }
             
             promptBuilder.AppendLine();
-            promptBuilder.AppendLine("Please respond as Aria with a brief dialogue (1-2 sentences) in the style of Stardew Valley.");
-            promptBuilder.AppendLine("Keep the response natural and in character. Use simple language and Stardew Valley-appropriate topics.");
+            
+            if (!string.IsNullOrEmpty(promptTemplate))
+            {
+                promptBuilder.AppendLine($"Aria's personality guidance: {promptTemplate}");
+            }
+            
+            promptBuilder.AppendLine("Please respond as Aria with a brief dialogue (1-2 sentences) in the appropriate style.");
+            promptBuilder.AppendLine("Keep the response natural and in character based on the personality guidance above.");
+            promptBuilder.AppendLine("At the end of your response, please provide 2-4 response options for the player, each on its own line and prefixed with 'Choice:'. For example:");
+            promptBuilder.AppendLine("Choice: That's very interesting!");
+            promptBuilder.AppendLine("Choice: I've been thinking about that too.");
+            promptBuilder.AppendLine("Choice: Could you tell me more about that?");
+            promptBuilder.AppendLine("Important: Format your response so it works with Stardew Valley's dialogue system. The response options will be automatically converted to clickable choices in the game.");
             
             return promptBuilder.ToString();
         }
@@ -212,6 +248,12 @@ namespace AriaMod
         /// </summary>
         private string GetSystemPrompt()
         {
+            if (_config?.PromptProfiles?.ContainsKey(_config.ActivePromptProfile) == true)
+            {
+                return _config.PromptProfiles[_config.ActivePromptProfile].System;
+            }
+            
+            // Fallback to default if profile not found
             return @"You are Aria, a friendly and knowledgeable town librarian in Stardew Valley. 
 Key characteristics:
 - You love books, gardening, and local folklore
@@ -228,17 +270,87 @@ Response guidelines:
 - Avoid modern slang or complex vocabulary
 - Respond as if in a casual conversation in a small town
 - Include Stardew Valley-appropriate topics like farming, seasons, local events, and nature
+- At the end of your response, provide 2-4 response options for the player, each on its own line and prefixed with 'Choice:'
 
 Example responses:
 - ""These books on ancient farming are fascinating. I've learned so much about soil composition.""
 - ""The spring blossoms are beautiful this year. Have you planted anything new?""
 - ""I'm researching local folklore. Did you know there are legends about the forest spirits?""
 
+Example choices:
+Choice: That sounds fascinating!
+Choice: I prefer modern farming methods.
+Choice: Could you recommend a book on that?
+
 Do not:
 - Break character
 - Mention anything outside the Stardew Valley universe
 - Use complex vocabulary or long responses
-- Make assumptions about the player's actions or thoughts";
+- Make assumptions about the player's actions or thoughts
+- Forget to include 2-4 response options at the end of your response
+- Use markdown or special formatting
+- Include line breaks in the middle of your main response";
+        }
+
+        /// <summary>
+        /// Parse player response choices from the AI's response
+        /// </summary>
+        /// <param name="response">The full AI response</param>
+        /// <returns>List of player response choices</returns>
+        private List<string> ParseChoicesFromResponse(string response)
+        {
+            var choices = new List<string>();
+            var lines = response.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            foreach (var line in lines)
+            {
+                if (line.StartsWith("Choice:"))
+                {
+                    var choice = line.Substring(7).Trim(); // Remove "Choice:" prefix
+                    if (!string.IsNullOrEmpty(choice))
+                    {
+                        choices.Add(choice);
+                    }
+                }
+            }
+            
+            return choices;
+        }
+        
+        /// <summary>
+        /// Generate default player response choices
+        /// </summary>
+        /// <returns>List of default response choices</returns>
+        private List<string> GenerateDefaultChoices()
+        {
+            return new List<string>
+            {
+                "That's very interesting!",
+                "I've been thinking about that too.",
+                "Could you tell me more about that?",
+                "I have a different opinion on that."
+            };
+        }
+        
+        /// <summary>
+        /// Clean dialogue text by removing choice lines
+        /// </summary>
+        /// <param name="response">The full AI response</param>
+        /// <returns>Cleaned dialogue text</returns>
+        private string CleanDialogueText(string response)
+        {
+            var lines = response.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var cleanLines = new List<string>();
+            
+            foreach (var line in lines)
+            {
+                if (!line.StartsWith("Choice:"))
+                {
+                    cleanLines.Add(line);
+                }
+            }
+            
+            return string.Join("\n", cleanLines);
         }
 
         public void Dispose()

@@ -1,0 +1,13 @@
+{
+  "Name": "Aria NPC",
+  "Author": "leo",
+  "Version": "1.0.0",
+  "Description": "Adds the Aria NPC with dialogue to Stardew Valley",
+  "UniqueID": "leo.CustomNPC",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": [],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher",
+    "MinimumVersion": "2.0.0"
+  }
+}

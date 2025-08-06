@@ -30,7 +30,7 @@
       "Target": "Data/Characters",
       "Entries": {
         "Aria": {
-          "DisplayName": "艾莉亚",
+          "DisplayName": "Aria",
           "BirthSeason": "spring",
           "BirthDay": 15,
           "HomeRegion": "Town",
@@ -84,8 +84,8 @@
       "Action": "EditData",
       "Target": "Characters/Dialogue/Aria",
       "Entries": {
-        "Aria_ai_greet": "你好，@！我刚才还在想我们的对话会多么有趣。",
-        "Aria_ai_chat": "今天是什么风把你吹来了，@？"
+        "Aria_ai_greet": "Hello, @! I was just thinking about how interesting our conversation could be.",
+        "Aria_ai_chat": "What brings you here today, @?"
       }
     }
   ]
